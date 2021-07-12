@@ -1,0 +1,19 @@
+GET http://localhost:5000/user
+
+###
+
+
+POST http://localhost:5000/register
+content-type: application/json
+
+{
+    "name": "Kunal Tiwari",
+    "email":"k@gmail.com",
+    "password":"123455"
+
+}
+
+### 
+
+GET http://localhost:5000/auth
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoia0BnbWFpbC5jb20ifSwiaWF0IjoxNjI1NzM4NjkzLCJleHAiOjE2MjU3NDIyOTN9.IY_bJkEdmz6dEj25mv3KOWS5TRdotIvCrn8fsmkOikw
