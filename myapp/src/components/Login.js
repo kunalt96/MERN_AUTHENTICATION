@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CardBody,
   CardTitle,
@@ -12,10 +12,17 @@ import {
   Input,
 } from 'reactstrap'
 import './Login.css'
-import fakeAuth from '../auth'
+import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import setAuthToken from '../setAuthToken'
 
-function Login({ isAuthenticated, setAuthentication, authenticate }) {
+function Login({
+  isAuthenticated,
+  setAuthentication,
+  authenticate,
+  verificationToken,
+  setToken,
+}) {
   const [formData, setFormData] = useState({ email: '', password: '' })
 
   const changeForm = (e) => {
@@ -25,15 +32,24 @@ function Login({ isAuthenticated, setAuthentication, authenticate }) {
     setFormData({ ...formData, [field]: target })
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
     console.log(formData)
-    if (formData.email == formData.password) {
-      authenticate()
+    try {
+      const { data } = await axios.post('http://localhost:4000/login', formData)
+      if (data) {
+        console.log(data)
+        setAuthentication(true)
+        setToken(data.token)
+        setAuthToken(data.token)
+        localStorage.setItem('x-auth-token', data.token)
+      }
+    } catch (e) {
+      setAuthentication(false)
+      console.log('e', e)
     }
   }
-
-  if (isAuthenticated == true) {
+  if (isAuthenticated == true && verificationToken.length > 0) {
     return <Redirect to='/users' />
   }
 

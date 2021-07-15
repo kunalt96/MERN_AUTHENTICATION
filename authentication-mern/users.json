@@ -1,17 +1,22 @@
 [
-    {
-        "name": "Farly Sheer",
-        "email": "fsheer0@theglobeandmail.com",
-        "password": "9H60Xt2bGi"
-    },
-    {
-        "name": "Wendell Blenkinship",
-        "email": "wblenkinship1@sun.com",
-        "password": "ZWjDujVb2QK"
-    },
-    {
-        "name": "Mariejeanne Hargrave",
-        "email": "mhargrave2@dyndns.org",
-        "password": "4TXmL2Q3g5"
-    }
+  {
+    "name": "Farly Sheer",
+    "email": "fsheer0@theglobeandmail.com",
+    "password": "9H60Xt2bGi"
+  },
+  {
+    "name": "Wendell Blenkinship",
+    "email": "wblenkinship1@sun.com",
+    "password": "ZWjDujVb2QK"
+  },
+  {
+    "name": "Mariejeanne Hargrave",
+    "email": "mhargrave2@dyndns.org",
+    "password": "4TXmL2Q3g5"
+  },
+  {
+    "name": "Kunal Tiwari",
+    "email": "kunal@gmail.com",
+    "password": "kunal123"
+  }
 ]
