@@ -12,8 +12,16 @@ import {
   Input,
 } from 'reactstrap'
 import './Login.css'
+import axios from 'axios'
+import { Redirect } from 'react-router-dom'
+import setAuthToken from '../setAuthToken'
 
-function Register() {
+function Register({
+  isAuthenticated,
+  verificationToken,
+  setToken,
+  setAuthentication,
+}) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -23,13 +31,31 @@ function Register() {
   const changeForm = (e) => {
     const target = e.target.value
     const field = e.target.name
-    console.log('in here')
     setFormData({ ...formData, [field]: target })
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
     console.log(formData)
+    try {
+      const { data } = await axios.post(
+        'http://localhost:4000/register',
+        formData
+      )
+      setToken(data.token)
+      setAuthentication(true)
+      setAuthToken(data.token)
+      localStorage.setItem('x-auth-token', data.token)
+    } catch (err) {
+      console.log('e', err)
+      setFormData({ email: '', password: '', name: '' })
+      setToken('')
+      setAuthentication(false)
+    }
+  }
+
+  if (isAuthenticated == true && verificationToken.length > 0) {
+    return <Redirect to='/users' />
   }
 
   return (

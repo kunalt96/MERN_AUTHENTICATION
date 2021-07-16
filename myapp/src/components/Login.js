@@ -19,7 +19,6 @@ import setAuthToken from '../setAuthToken'
 function Login({
   isAuthenticated,
   setAuthentication,
-  authenticate,
   verificationToken,
   setToken,
 }) {
@@ -28,13 +27,11 @@ function Login({
   const changeForm = (e) => {
     const target = e.target.value
     const field = e.target.name
-    console.log('in here')
     setFormData({ ...formData, [field]: target })
   }
 
   const submitHandler = async (e) => {
     e.preventDefault()
-    console.log(formData)
     try {
       const { data } = await axios.post('http://localhost:4000/login', formData)
       if (data) {

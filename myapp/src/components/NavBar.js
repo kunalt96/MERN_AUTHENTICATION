@@ -11,7 +11,6 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 function NavBar({ isAuthenticated, signOut }) {
   const handleLogout = () => {
-    console.log('i am clled')
     localStorage.removeItem('x-auth-token')
     signOut()
   }

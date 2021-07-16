@@ -17,9 +17,7 @@ function UsersDetails({ isAuthenticated, verificationToken }) {
   useEffect(() => {
     const getUserDetails = async () => {
       try {
-        console.log(localStorage.getItem('x-auth-token'))
         const { data } = await axios.get('http://localhost:4000/auth')
-        console.log(data)
         setUserData(data)
       } catch (err) {
         console.log('e', err)
