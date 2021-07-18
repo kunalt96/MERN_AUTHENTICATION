@@ -22,6 +22,7 @@ Reactstrap and Bootstrap are used for basic styling. No complex styling as such
 2. Latest Hooks based syntax - Functional Components
 3. JWT - Token based authorization
 4. Login/Registration/Users Data
+5. Private Routes
 
 ## LICENSE
 
