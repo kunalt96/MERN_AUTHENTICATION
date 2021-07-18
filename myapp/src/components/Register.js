@@ -15,12 +15,16 @@ import './Login.css'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import setAuthToken from '../setAuthToken'
+import AlertBox from './Alert'
 
 function Register({
   isAuthenticated,
   verificationToken,
   setToken,
   setAuthentication,
+  alert,
+  showAlert,
+  removeAlert,
 }) {
   const [formData, setFormData] = useState({
     email: '',
@@ -48,6 +52,10 @@ function Register({
       localStorage.setItem('x-auth-token', data.token)
     } catch (err) {
       console.log('e', err)
+      showAlert({ message: 'Server Error', variant: 'danger' })
+      setTimeout(() => {
+        removeAlert()
+      }, 3000)
       setFormData({ email: '', password: '', name: '' })
       setToken('')
       setAuthentication(false)
@@ -62,9 +70,11 @@ function Register({
     <Container>
       <Row className='align-login-form d-flex justify-content-center align-items-center'>
         <Col md={12} lg={4}>
-          <Card>
+          <Card className='bg-light'>
             <CardBody>
-              <CardTitle className='text-center'>Register Here</CardTitle>
+              <CardTitle className='text-center text-dark'>
+                Register Here
+              </CardTitle>
               <Form onSubmit={submitHandler}>
                 <FormGroup>
                   <Input
@@ -101,6 +111,9 @@ function Register({
                 </FormGroup>
                 <Button color='success'>Sign Up</Button>
               </Form>
+              {alert?.message && (
+                <AlertBox variant={alert.variant}>{alert.message}</AlertBox>
+              )}
             </CardBody>
           </Card>
         </Col>

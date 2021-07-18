@@ -15,12 +15,16 @@ import './Login.css'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import setAuthToken from '../setAuthToken'
+import AlertBox from './Alert'
 
 function Login({
   isAuthenticated,
   setAuthentication,
   verificationToken,
   setToken,
+  alert,
+  showAlert,
+  removeAlert,
 }) {
   const [formData, setFormData] = useState({ email: '', password: '' })
 
@@ -43,6 +47,10 @@ function Login({
       }
     } catch (e) {
       setAuthentication(false)
+      showAlert({ message: 'Server Error', variant: 'danger' })
+      setTimeout(() => {
+        removeAlert()
+      }, 3000)
       console.log('e', e)
     }
   }
@@ -54,9 +62,11 @@ function Login({
     <Container>
       <Row className='align-login-form d-flex justify-content-center align-items-center'>
         <Col md={12} lg={4}>
-          <Card>
+          <Card className='bg-light'>
             <CardBody>
-              <CardTitle className='text-center'>Login Form</CardTitle>
+              <CardTitle className='text-center text-dark'>
+                Login Form
+              </CardTitle>
               <Form onSubmit={submitHandler}>
                 <FormGroup>
                   <Input
@@ -82,6 +92,9 @@ function Login({
                 </FormGroup>
                 <Button color='primary'>Login</Button>
               </Form>
+              {alert?.message && (
+                <AlertBox variant={alert.variant}>{alert.message}</AlertBox>
+              )}
             </CardBody>
           </Card>
         </Col>

@@ -17,9 +17,9 @@ function NavBar({ isAuthenticated, signOut }) {
 
   return (
     <div>
-      <Navbar color='dark' dark expand='lg'>
+      <Navbar color='light' light expand='lg'>
         <Container>
-          <NavbarBrand href='/'>MERN</NavbarBrand>
+          <NavbarBrand href='/'>MERN - AUTH</NavbarBrand>
           {isAuthenticated === true ? (
             <>
               {' '}
