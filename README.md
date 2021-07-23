@@ -23,6 +23,7 @@ Reactstrap and Bootstrap are used for basic styling. No complex styling as such
 3. JWT - Token based authorization
 4. Login/Registration/Users Data
 5. Private Routes
+6. Pagination - Calling external apis for the same
 
 ## LICENSE
 
