@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
   CardBody,
   CardTitle,
@@ -16,12 +16,11 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import setAuthToken from '../setAuthToken'
 import AlertBox from './Alert'
+import UserContext from '../user-context'
 
 function Register({
-  isAuthenticated,
   verificationToken,
   setToken,
-  setAuthentication,
   alert,
   showAlert,
   removeAlert,
@@ -31,6 +30,7 @@ function Register({
     password: '',
     name: '',
   })
+  const { isAuthenticated, setAuthentication } = useContext(UserContext)
 
   const changeForm = (e) => {
     const target = e.target.value

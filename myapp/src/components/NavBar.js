@@ -25,6 +25,11 @@ function NavBar({ isAuthenticated, signOut }) {
               {' '}
               <Nav className='mr-auto' navbar>
                 <NavItem>
+                  <LinkContainer to='/posts'>
+                    <NavLink>Posts</NavLink>
+                  </LinkContainer>
+                </NavItem>
+                <NavItem>
                   <LinkContainer to='#' onClick={handleLogout}>
                     <NavLink>Logout</NavLink>
                   </LinkContainer>

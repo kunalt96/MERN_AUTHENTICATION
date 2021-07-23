@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {
   CardBody,
   CardTitle,
@@ -16,17 +16,11 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import setAuthToken from '../setAuthToken'
 import AlertBox from './Alert'
+import UserContext from '../user-context'
 
-function Login({
-  isAuthenticated,
-  setAuthentication,
-  verificationToken,
-  setToken,
-  alert,
-  showAlert,
-  removeAlert,
-}) {
+function Login({ verificationToken, setToken, alert, showAlert, removeAlert }) {
   const [formData, setFormData] = useState({ email: '', password: '' })
+  const { isAuthenticated, setAuthentication } = useContext(UserContext)
 
   const changeForm = (e) => {
     const target = e.target.value

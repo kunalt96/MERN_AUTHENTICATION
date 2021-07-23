@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Redirect, Route } from 'react-router-dom'
+import UserContext from '../user-context'
 
-function PrivateRoute({ children, isAuthenticated, ...rest }) {
+function PrivateRoute({ children, ...rest }) {
+  const { isAuthenticated } = useContext(UserContext)
   return (
     <Route
       {...rest}

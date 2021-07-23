@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   Card,
   CardBody,
@@ -10,9 +10,11 @@ import {
 } from 'reactstrap'
 import './Login.css'
 import axios from 'axios'
+import UserContext from '../user-context'
 
-function UsersDetails({ isAuthenticated, verificationToken }) {
+function UsersDetails({ verificationToken }) {
   const [userData, setUserData] = useState(false)
+  const { isAuthenticated } = useContext(UserContext)
 
   useEffect(() => {
     const getUserDetails = async () => {
